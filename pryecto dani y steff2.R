@@ -1,14 +1,12 @@
-#Proyecto fianl 
-#Stefanny y Daniela 
-# 
+Universidad de Costa Rica 
+#Proyecto fianl de computacional 
+#Stefanny Grnados y Daniela Marin
 
 
 # Find out more about building applications with Shiny here:
 #
 #    https://shiny.posit.co/
 #
-
-
 
 # UI de la aplicación
 ui <- fluidPage(
