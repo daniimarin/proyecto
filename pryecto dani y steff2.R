@@ -1,4 +1,4 @@
-Universidad de Costa Rica 
+#Universidad de Costa Rica 
 #Proyecto fianl de computacional 
 #Stefanny Grnados y Daniela Marin
 
@@ -156,5 +156,26 @@ server <- function(input, output) {
           Orden_Pais
         })
       })
+      
+      output$grafico_votos <- renderPlot({
+        Votos1 <- datos_filtrados()
+        
+        if (input$radio_grafico == "") {
+          return(NULL)
+        }
+        
+        if (input$radio_grafico == "linea") {
+          Porcentaje_Anno_Pais <- Votos1 %>%
+            filter(vote == 1) %>%
+            group_by(year, country) %>%
+            summarise(
+              Total = n(),
+              .groups = 'drop' # para evitar mensajes de agrupación
+            ) %>%
+            mutate(Porcentaje = (Total / sum(Total)) * 100)
+          
+          
+
+    
       
   
