@@ -190,7 +190,36 @@ server <- function(input, output) {
               .groups = 'drop' # para evitar mensajes de agrupación
             ) %>%
             mutate(Porcentaje = (Total / sum(Total)) * 100)
+          ggplot(Porcentaje_Anno_Pais, aes(x = year, y = Porcentaje)) +
+            geom_line() +
+            geom_point() +
+            labs(title = "Porcentaje de votos 'Sí' por año",
+                 x = "Año",
+                 y = "Porcentaje") +
+            facet_wrap(~country) +
+            theme_minimal()
+        } else if (input$radio_grafico == "porcentaje_anno") {
+          Porcentaje_Anno <- Votos1 %>%
+            filter(vote == 1) %>%
+            group_by(year) %>%
+            summarise(
+              Total = n(),
+              Porcentaje = (Total / nrow(Votos1)) * 100
+            )
           
+          ggplot(Porcentaje_Anno, aes(x = year, y = Porcentaje, group = 1)) +
+            geom_line(color = "green") +
+            geom_point(color = "blue") + 
+            labs(title = "Porcentaje de votos 'Sí' por año",
+                 x = "Año",
+                 y = "Porcentaje") +
+            scale_x_continuous(breaks = seq(min(Porcentaje_Anno$year), max(Porcentaje_Anno$year), by = 10)) +
+            theme_minimal()
+        }
+      })
+    }
+    
+    
           
           
 
