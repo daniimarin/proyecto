@@ -22,13 +22,14 @@ library(countrycode)
 
 # UI de la aplicación
 ui <- fluidPage(
-  titlePanel("Votación"),
+  titlePanel("Estadísticas de las votaciones"),
   sidebarLayout(
     sidebarPanel(
-      checkboxGroupInput("checkbox_votos", "Seleccionar votos:",
+      checkboxGroupInput(inputId = "checkbox_votos", 
+                         label = h5("Seleccionar votos:"),
                          choices = list("Sí" = 1, "Se abstiene" = 2, "No" = 3),
                          selected = 1),
-      actionButton("btn_pais", "Porcentaje país"),
+      actionButton(inputId = "entrada2", label = h5("Porcentaje país"),icon = "NULL"),
       radioButtons("radio_grafico", "Seleccionar tipo de gráfico:",
                    choices = list("Porcentaje por año" = "porcentaje_anno", "Gráfico de línea" = "linea", "Facet" = "facet"),
                    selected = "")
@@ -68,7 +69,7 @@ server <- function(input, output) {
     votos_resumen
   })
   
-  observeEvent(input$btn_pais, {
+  observeEvent(input$entrada2, {
     Votos1 <- datos_filtrados()
     Orden_Pais <- Votos1 %>%
       filter(vote == 1) %>%
