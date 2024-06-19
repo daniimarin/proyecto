@@ -32,7 +32,7 @@ ui <- fluidPage(
       actionButton(inputId = "entrada2", label = h5("Porcentaje país")),
       radioButtons("entrada_grafico", "Seleccionar tipo de gráfico:",
                    choices = list("Gráfico porcentaje por año" = "porcentaje_anno", "Gráfico de línea" = "linea", " Gráfico Facet" = "facet"),
-                   selected = "")
+                   selected = "Gráfico porcentaje por año")
     ),
     mainPanel(
       plotOutput("grafico_votos"),
