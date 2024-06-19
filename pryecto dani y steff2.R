@@ -30,13 +30,13 @@ ui <- fluidPage(
                          label = h5("Seleccionar votos:"),
                          choices = list("Sí" = 1, "Se abstiene" = 2, "No" = 3),
                          selected = 1),
-      actionButton(inputId = "entrada2", label = h5("Porcentaje país")),
-      radioButtons("entrada_grafico", "Seleccionar tipo de gráfico:",
+      actionButton(inputId = "entrada2", label = h5("Porcentaje país")),#genera la tabla de porcentaje por pais
+      radioButtons("entrada_grafico", "Seleccionar tipo de gráfico:",#crea las casillas para seleccionar geafico
                    choices = list("Gráfico porcentaje por año" = "porcentaje_anno", "Gráfico de línea" = "linea", " Gráfico Facet" = "facet"),
                    selected = "Gráfico porcentaje por año")
     ),
     mainPanel(
-      plotOutput("grafico_votos"),
+      plotOutput("grafico_votos"),#ejecucion del boton
       tableOutput("tabla_votos"),
       tableOutput("tabla_pais")
     )
@@ -44,6 +44,7 @@ ui <- fluidPage(
 )
 
 # Server de la aplicación
+#primera parte de la tarea
 server <- function(input, output) {
   
   datos_filtrados <- reactive({
@@ -56,7 +57,7 @@ server <- function(input, output) {
                               'United Kingdom of Great Britain and Northern Ireland' = 'United Kingdom'))
     Votos1
   })
-  
+  #tabla por tipo de voto
   output$tabla_votos <- renderTable({
     votos_filtrados <- datos_filtrados()
     
