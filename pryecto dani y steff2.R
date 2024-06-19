@@ -3,6 +3,18 @@
 #Stefanny Grnados y Daniela Marin
 
 
+#Cargar liberias
+
+install.packages("shiny")
+install.packages("dplyr")
+install.packages("ggplot2")  # Agregar ggplot2 para graficar
+install.packages("countrycode")
+
+library(shiny)
+library(dplyr)
+library(ggplot2)
+library(countrycode)
+
 # Find out more about building applications with Shiny here:
 #
 #    https://shiny.posit.co/
