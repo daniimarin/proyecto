@@ -33,7 +33,7 @@ ui <- fluidPage(
       actionButton(inputId = "entrada2", label = h5("Porcentaje país")),#genera la tabla de porcentaje por pais
       radioButtons("entrada_grafico", "Seleccionar tipo de gráfico:",#crea las casillas para seleccionar geafico
                    choices = list("Gráfico porcentaje por año" = "porcentaje_anno", "Gráfico de línea" = "linea", " Gráfico Facet" = "facet"),
-                   selected = "Gráfico porcentaje por año")
+                   selected = "porcentaje_anno")
     ),
     mainPanel(
       plotOutput("grafico_votos"),#ejecucion del boton
