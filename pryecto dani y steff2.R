@@ -173,6 +173,24 @@ server <- function(input, output) {
               .groups = 'drop' # para evitar mensajes de agrupación
             ) %>%
             mutate(Porcentaje = (Total / sum(Total)) * 100)
+          ggplot(Porcentaje_Anno_Pais, aes(x = year, y = Porcentaje, color = country, group = country)) +
+            geom_line() +
+            geom_point() +
+            labs(title = "Porcentaje de votos 'Sí' por año y país",
+                 x = "Año",
+                 y = "Porcentaje",
+                 color = "País") +
+            theme_minimal()
+        } else if (input$radio_grafico == "facet") {
+          Porcentaje_Anno_Pais <- Votos1 %>%
+            filter(vote == 1) %>%
+            group_by(year, country) %>%
+            summarise(
+              Total = n(),
+              .groups = 'drop' # para evitar mensajes de agrupación
+            ) %>%
+            mutate(Porcentaje = (Total / sum(Total)) * 100)
+          
           
           
 
