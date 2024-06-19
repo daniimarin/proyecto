@@ -70,7 +70,7 @@ server <- function(input, output) {
     
     votos_resumen
   })
-  
+  #ordena tabla de menor a mayor
   observeEvent(input$entrada2, {
     Votos1 <- datos_filtrados()
     Orden_Pais <- Votos1 %>%
@@ -86,7 +86,7 @@ server <- function(input, output) {
       Orden_Pais
     })
   })
-  
+  #crear graficos finales
       output$grafico_votos <- renderPlot({
         Votos1 <- datos_filtrados()
         
