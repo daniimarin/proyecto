@@ -1,6 +1,6 @@
 #Universidad de Costa Rica 
 #Proyecto fianl de computacional 
-#Stefanny Grnados y Daniela Marin
+#Stefanny Granados y Daniela Marin
 
 
 #Cargar liberias
@@ -29,9 +29,9 @@ ui <- fluidPage(
                          label = h5("Seleccionar votos:"),
                          choices = list("Sí" = 1, "Se abstiene" = 2, "No" = 3),
                          selected = 1),
-      actionButton(inputId = "entrada2", label = h5("Porcentaje país"),icon = "NULL"),
-      radioButtons("radio_grafico", "Seleccionar tipo de gráfico:",
-                   choices = list("Porcentaje por año" = "porcentaje_anno", "Gráfico de línea" = "linea", "Facet" = "facet"),
+      actionButton(inputId = "entrada2", label = h5("Porcentaje país")),
+      radioButtons("entrada_grafico", "Seleccionar tipo de gráfico:",
+                   choices = list("Gráfico porcentaje por año" = "porcentaje_anno", "Gráfico de línea" = "linea", " Gráfico Facet" = "facet"),
                    selected = "")
     ),
     mainPanel(
@@ -88,11 +88,11 @@ server <- function(input, output) {
       output$grafico_votos <- renderPlot({
         Votos1 <- datos_filtrados()
         
-        if (input$radio_grafico == "") {
+        if (input$entrada_grafico == "") {
           return(NULL)
         }
         
-        if (input$radio_grafico == "linea") {
+        if (input$entrada_grafico == "linea") {
           Porcentaje_Anno_Pais <- Votos1 %>%
             filter(vote == 1) %>%
             group_by(year, country) %>%
@@ -109,7 +109,7 @@ server <- function(input, output) {
                  y = "Porcentaje",
                  color = "País") +
             theme_minimal()
-        } else if (input$radio_grafico == "facet") {
+        } else if (input$entrada_grafico == "facet") {
           Porcentaje_Anno_Pais <- Votos1 %>%
             filter(vote == 1) %>%
             group_by(year, country) %>%
@@ -126,7 +126,7 @@ server <- function(input, output) {
                  y = "Porcentaje") +
             facet_wrap(~country) +
             theme_minimal()
-        } else if (input$radio_grafico == "porcentaje_anno") {
+        } else if (input$entrada_grafico == "porcentaje_anno") {
           Porcentaje_Anno <- Votos1 %>%
             filter(vote == 1) %>%
             group_by(year) %>%
