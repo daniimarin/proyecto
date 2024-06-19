@@ -86,7 +86,7 @@ server <- function(input, output) {
       Orden_Pais
     })
   })
-  #crear graficos finales
+  #creacion de graficos finales
       output$grafico_votos <- renderPlot({
         Votos1 <- datos_filtrados()
         
@@ -137,7 +137,7 @@ server <- function(input, output) {
               Porcentaje = (Total / nrow(Votos1)) * 100
             )
           
-          ggplot(Porcentaje_Anno, aes(x = year, y = Porcentaje, group = 1)) +
+           ggplot(Porcentaje_Anno, aes(x = year, y = Porcentaje, group = 1)) +
             geom_line(color = "green") +
             geom_point(color = "blue") + 
             labs(title = "Porcentaje de votos 'Sí' por año",
@@ -149,7 +149,7 @@ server <- function(input, output) {
       })
     }
     
-    # Ejecutar la aplicación Shiny
+    # Ejecutacion de  la aplicación Shiny
 shinyApp(ui = ui, server=server)
     
           
