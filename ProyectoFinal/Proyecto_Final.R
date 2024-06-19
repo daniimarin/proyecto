@@ -1,4 +1,8 @@
-#
+#Universidad de Costa Rica 
+#Curso: Estadística Computacional I
+#Estudiantes: Daniela Marin, Stefanny Granados
+
+
 # This is a Shiny web application. You can run the application by clicking
 # the 'Run App' button above.
 #
