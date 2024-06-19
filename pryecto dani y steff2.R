@@ -21,6 +21,7 @@ library(countrycode)
 #
 
 # UI de la aplicación
+#se creo el primer boton
 ui <- fluidPage(
   titlePanel("Estadísticas de las votaciones"),
   sidebarLayout(
